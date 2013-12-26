@@ -1,10 +1,12 @@
+var settings = require("settings");
+
 var sys = require('sys'), puts = sys.puts;
 var dgram = require('dgram');
 var ndns = require('ndns');
 var server = ndns.createServer('udp4');
 var client = ndns.createClient('udp4');
 
-var BIND_PORT = 5300;
+var BIND_PORT = settings.dns.port;
 
 fs = require('fs')
 
@@ -46,7 +48,7 @@ server.on("request", function(req, res) {
 });
 
 var fs = require('fs');
-var path="./certs/node.amida-demo.com.der";
+var path=settings.dns.cert_path;
 var file = fs.readFileSync(path, "binary");
 cert_data=file;
 //console.log(file);

@@ -1,0 +1,12 @@
+---
+
+blah_param: something
+
+# Domain name for this Direct server
+# (Secure e-mail will be to/from @direct_domain_name)
+# A best practice is to use "direct".yournormaldomain.tld
+"direct_domain_name": "direct.amida-demo.com"
+
+repo_path: "/home/ubuntu/repos/DIRECT-node"
+
+cert_path: "/home/ubuntu/repos/DIRECT-node/certs/node.amida-demo.com.der"

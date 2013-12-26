@@ -1,8 +1,10 @@
+var settings = require("settings");
+
 var simplesmtp = require("simplesmtp"),
     fs = require("fs");
 
 var smtp = simplesmtp.createServer();
-smtp.listen(8025);
+smtp.listen(settings.smtp.port);
 
 smtp.on("startData", function(connection){
     console.log("Message from:", connection.from);

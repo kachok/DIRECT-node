@@ -22,10 +22,14 @@
       sudo: true
 
     - name: clone DIRECT-node repo from GitHub
-      git: repo=https://github.com/kachok/DIRECT-node.git dest=/home/vagrant/repos/DIRECT-node
+      git: repo=https://github.com/kachok/DIRECT-node.git dest={{repo_path}}
 
     - name: install all NPM packages required by DIRECT-node
-      npm: path=/home/vagrant/repos/DIRECT-node/
+      npm: path={{repo_path}}
+
+    - name: override Node.js app settings.js
+      template: src=files/settings.js dest={{repo_path}}/settings.js
+      sudo: yes
 
     - name: install DNS as upstart service
       template: src=files/dns-direct.conf dest=/etc/init/dns-direct.conf
