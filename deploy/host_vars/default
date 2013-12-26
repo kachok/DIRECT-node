@@ -10,3 +10,6 @@ blah_param: something
 repo_path: "/home/vagrant/repos/DIRECT-node"
 
 cert_path: "/home/vagrant/repos/DIRECT-node/certs/node.amida-demo.com.der"
+
+direct_ip: "127.0.0.1"
+direct_domain: "direct.amida-demo.com"

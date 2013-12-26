@@ -5,6 +5,7 @@ var simplesmtp = require("simplesmtp"),
 
 var smtp = simplesmtp.createServer();
 smtp.listen(settings.smtp.port);
+console.log("listening on port "+settings.smtp.port);
 
 smtp.on("startData", function(connection){
     console.log("Message from:", connection.from);

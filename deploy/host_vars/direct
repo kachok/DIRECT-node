@@ -10,3 +10,6 @@ blah_param: something
 repo_path: "/home/ubuntu/repos/DIRECT-node"
 
 cert_path: "/home/ubuntu/repos/DIRECT-node/certs/node.amida-demo.com.der"
+
+direct_ip: "54.201.52.249"
+direct_domain: "direct.amida-demo.com"
