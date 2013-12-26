@@ -1,0 +1,22 @@
+---
+- hosts: all
+  tasks:
+    - name: install prerequisites for node.js
+      apt: pkg=python-software-properties,python,g++,make state=present
+      sudo: true
+
+    - name: add new apt repo with node.js available
+      apt_repository: repo=ppa:chris-lea/node.js state=present
+      sudo: true
+
+    - name: apt-get update with new repo attached
+      apt: update_cache=yes
+      sudo: true
+
+    - name: install node.js
+      apt: pkg=nodejs state=present
+      sudo: true
+
+    - name: install git
+      apt: pkg=git-core state=present
+      sudo: true

@@ -1,0 +1,26 @@
+{
+  "name": "DIRECT-node",
+  "description": "hacking of implementation of DIRECT in node.js",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Dmitry Kachaev",
+  "homepage": "",
+  "contributors": [ "Dmitry Kachaev <dmitry.kachaev@gmail.com> (https://github.com/kachok)" ],
+  "bugs": { "url": "" },
+  "scripts": { "start": "nodemon app.js" },
+  "dependencies": {
+    "simplesmtp": "~0.3.16",
+    "ndns"   :  "kachok/ndns",
+    "node-dns" : "kachok/node-dns"
+  },
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "nodemon": "*"
+  },
+  "keywords": [],
+  "repository": "",
+  "licenses": [{
+    "type": "MIT",
+    "url": "http://opensource.org/licenses/MIT"
+  }]
+}

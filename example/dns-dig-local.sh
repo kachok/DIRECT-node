@@ -1,0 +1,1 @@
+dig @localhost -p 5300 -t CERT direct.amida-demo.com
