@@ -20,3 +20,30 @@
     - name: install git
       apt: pkg=git-core state=present
       sudo: true
+
+    - name: clone DIRECT-node repo from GitHub
+      git: repo=https://github.com/kachok/DIRECT-node.git dest=/home/vagrant/repos/DIRECT-node
+
+    - name: install all NPM packages required by DIRECT-node
+      npm: path=/home/vagrant/repos/DIRECT-node/
+
+    - name: install DNS as upstart service
+      template: src=files/dns-direct.conf dest=/etc/init/dns-direct.conf
+      sudo: yes
+      notify:
+        - restart DNS      
+
+    - name: install SMTP as upstart service
+      template: src=files/smtp-direct.conf dest=/etc/init/smtp-direct.conf
+      sudo: yes
+      notify:
+        - restart SMTP      
+
+  handlers:
+    - name: restart DNS
+      service:  name=dns-direct state=restarted
+      sudo: yes
+
+    - name: restart SMTP
+      service:  name=smtp-direct state=restarted
+      sudo: yes

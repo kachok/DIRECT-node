@@ -46,7 +46,7 @@ server.on("request", function(req, res) {
 });
 
 var fs = require('fs');
-var path="certs/node.amida-demo.com.der";
+var path="./certs/node.amida-demo.com.der";
 var file = fs.readFileSync(path, "binary");
 cert_data=file;
 //console.log(file);
