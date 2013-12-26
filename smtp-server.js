@@ -1,4 +1,4 @@
-var settings = require("settings");
+var settings = require("./settings");
 
 var simplesmtp = require("simplesmtp"),
     fs = require("fs");

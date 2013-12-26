@@ -1,4 +1,4 @@
-var settings = require("settings");
+var settings = require("./settings");
 
 var sys = require('sys'), puts = sys.puts;
 var dgram = require('dgram');
