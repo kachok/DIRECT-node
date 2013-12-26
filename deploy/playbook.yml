@@ -1,5 +1,10 @@
 ---
 - hosts: all
+  vars:
+    dns_port: 5300
+    smtp_port: 8025
+    email: "dmitry@amida-tech.com"
+
   tasks:
     - name: install prerequisites for node.js
       apt: pkg=python-software-properties,python,g++,make state=present
@@ -41,7 +46,27 @@
       template: src=files/smtp-direct.conf dest=/etc/init/smtp-direct.conf
       sudo: yes
       notify:
-        - restart SMTP      
+        - restart SMTP  
+
+    - name: map ports to non-privileged ports (DNS/TCP)
+      command: iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 53 -j REDIRECT --to-ports {{dns_port}}
+      sudo: true
+    - name: map ports to non-privileged ports (DNS/UDP)
+      command: iptables -t nat -I OUTPUT -p udp -d 127.0.0.1 --dport 53 -j REDIRECT --to-ports {{dns_port}}
+      sudo: true
+    - name: map ports to non-privileged ports (SMTP/TCP)
+      command: iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 25 -j REDIRECT --to-ports {{smtp_port}}
+      sudo: true
+
+    - name: map ports to non-privileged ports (DNS/TCP for localhost)
+      command: iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-port {{dns_port}}
+      sudo: true
+    - name: map ports to non-privileged ports (DNS/UDP for localhost)
+      command: iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-port {{dns_port}}
+      sudo: true
+    - name: map ports to non-privileged ports (SMTP/TCP for localhost)
+      command: iptables -t nat -A PREROUTING -p tcp --dport 25 -j REDIRECT --to-port {{smtp_port}}
+      sudo: true
 
     # need to restart DNS and SMTP based on code change (e.g. git task above)
 
@@ -53,3 +78,7 @@
     - name: restart SMTP
       service:  name=smtp-direct state=restarted
       sudo: yes
+
+    - name: restart iptables
+      action: service name=iptables state=restarted  
+      sudo: yes    

@@ -4,14 +4,14 @@ settings.ip = "{{direct_ip}}";
 
 settings.direct_domain = "{{direct_domain}}";
 
-settings.email = "dmitry@amida-tech.com";
+settings.email = "{{email}}";
 
 settings.dns = {};
-settings.dns.port = 5300;
+settings.dns.port = {{dns_port}};
 settings.dns.cert_path = "{{cert_path}}";
 
 settings.smtp = {};
-settings.smtp.port = 8025;
+settings.smtp.port = {{smtp_port}}};
 
 module.exports = settings;
 
