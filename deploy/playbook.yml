@@ -39,6 +39,8 @@
       notify:
         - restart SMTP      
 
+    # need to restart DNS and SMTP based on code change (e.g. git task above)
+
   handlers:
     - name: restart DNS
       service:  name=dns-direct state=restarted
