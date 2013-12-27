@@ -12,5 +12,6 @@ settings.dns.cert_path = "./certs/node.amida-demo.com.der";
 
 settings.smtp = {};
 settings.smtp.port = 8025;
+settings.smtp.spool_path = "";
 
 module.exports = settings;

@@ -10,7 +10,7 @@ console.log("listening on port "+settings.smtp.port);
 smtp.on("startData", function(connection){
     console.log("Message from:", connection.from);
     console.log("Message to:", connection.to);
-    connection.saveStream = fs.createWriteStream("message.txt");
+    connection.saveStream = fs.createWriteStream(settings.smtp.spool_path+"message.txt");
 });
 
 smtp.on("data", function(connection, chunk){

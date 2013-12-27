@@ -68,6 +68,15 @@
       command: iptables -t nat -A PREROUTING -p tcp --dport 25 -j REDIRECT --to-port {{smtp_port}}
       sudo: true
 
+
+    - name: Create folder for mail spool
+      action: file path={{spool_path}} state=directory
+      sudo: true
+
+    - name: chmod mail spool folder
+      command: chown ubuntu {{spool_path}}
+      sudo: true
+
     # need to restart DNS and SMTP based on code change (e.g. git task above)
 
   handlers:
