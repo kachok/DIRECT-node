@@ -7,11 +7,5 @@ blah_param: something
 # A best practice is to use "direct".yournormaldomain.tld
 "direct_domain_name": "direct.amida-demo.com"
 
-repo_path: "/home/ubuntu/repos/DIRECT-node"
-
-cert_path: "/home/ubuntu/repos/DIRECT-node/certs/node.amida-demo.com.der"
-
 direct_ip: "54.201.52.249"
 direct_domain: "direct.amida-demo.com"
-
-spool_path: "/opt/direct/spool/"

@@ -4,6 +4,10 @@
     dns_port: 5300
     smtp_port: 8025
     email: "dmitry@amida-tech.com"
+    repo_path: "{{ansible_env.HOME}}/repos/DIRECT-node"
+    cert_path: "{{repo_path}}/certs/node.amida-demo.com.der"
+    spool_path: "/opt/direct/spool/"
+
 
   tasks:
     - name: install prerequisites for node.js
@@ -74,7 +78,7 @@
       sudo: true
 
     - name: chmod mail spool folder
-      command: chown ubuntu {{spool_path}}
+      command: chown {{ansible_env.LOGNAME}} {{spool_path}}
       sudo: true
 
     # need to restart DNS and SMTP based on code change (e.g. git task above)
