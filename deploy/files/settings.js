@@ -11,7 +11,7 @@ settings.dns.port = {{dns_port}};
 settings.dns.cert_path = "{{cert_path}}";
 
 settings.smtp = {};
-settings.smtp.port = {{smtp_port}}};
+settings.smtp.port = {{smtp_port}};
 settings.smtp.spool_path = "{{spool_path}}";
 
 
